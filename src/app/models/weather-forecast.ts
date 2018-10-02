@@ -1,3 +1,8 @@
 export class WeatherForecast {
-    constructor() {}
+    
+    maxTemp : string;
+    date : string;
+    constructor() {
+
+    }
 }

@@ -1,0 +1,4 @@
+<input [(ngModel)]=searchText />
+<button (click) = childComponent.getWeather()> Get Weather</button>
+
+<app-weather-forecast-list [receivedText]=searchText #childComponent></app-weather-forecast-list>

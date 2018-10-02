@@ -1,3 +1,8 @@
-<p>
-  weather-forecast-list works!
-</p>
+<app-weather-forecast [cityName]="cityDetails.cityName" [state]=cityDetails.stateCode ></app-weather-forecast>
+
+<app-weather-forecast [state]=cityDetails.stateCode ></app-weather-forecast>
+
+<div *ngFor = "let forecast of weatherForecasts">
+    <app-weather-forecast [dateTime] = forecast.date [maxTemp]=forecast.maxTemp ></app-weather-forecast>
+</div>
+
