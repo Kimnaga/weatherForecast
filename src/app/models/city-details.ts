@@ -1,7 +1,8 @@
 export class CityDetails {
     cityName : string;
     stateCode : string;
-    constructor() {
-
+    constructor(city:string, state:string) {
+        this.cityName = city;
+        this.stateCode = state;
     }
 }

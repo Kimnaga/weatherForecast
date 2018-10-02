@@ -11,10 +11,10 @@ export class WeatherForecastComponent implements OnInit {
   @Input() maxTemp:string;
   @Input() dateTime:string;
   constructor() {
-    this.cityName ='';
-    this.dateTime ='';
-    this.maxTemp ='';
-    this.state = '';
+    this.cityName =' ';
+    this.dateTime =' ';
+    this.maxTemp =' ';
+    this.state = ' ';
   }
 
   ngOnInit() {

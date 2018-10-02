@@ -14,13 +14,11 @@ export class WeatherForecastListComponent implements OnInit {
   weatherForecasts: WeatherForecast[];
   @Input() receivedText: string;
   cityDetails: CityDetails;
-  weatherObj:WeatherForecast;
 
   constructor(private http: HttpClient) {
-    this.weatherForecasts = [];
+    this.weatherForecasts =[];
     this.weatherBitUrl = ``;
-    this.cityDetails = new CityDetails();
-    this.weatherObj = new WeatherForecast();
+    this.cityDetails= new CityDetails ('','');
   }
 
   getWeather() {
@@ -28,17 +26,15 @@ export class WeatherForecastListComponent implements OnInit {
     //subscribe to weatherbit forecase results here
     this.http.get(this.weatherBitUrl).subscribe((result:any)=>{
       console.log(result);
-      this.cityDetails.cityName = result['city_name'];
-      this.cityDetails.stateCode =result['state_code'];
-      //console.log(this.cityDetails.cityName+" "+this.cityDetails.stateCode);
+      this.cityDetails = new CityDetails (result['city_name'], result['state_code']);
+      console.log(this.cityDetails.cityName+" "+this.cityDetails.stateCode);
 
       
-      result['data'].forEach (function (forecast){
-        console.log (forecast.max_temp+" "+forecast.datetime);
-        //this.weatherObj.maxTemp = forecast.max_temp;
-        //this.weatherObj.date = forecast.datetime;
-        //this.weatherForecasts.push(this.weatherObj);
+      result['data'].forEach ((forecast)=>{
+        //console.log (forecast.max_temp+" "+forecast.datetime);
+        this.weatherForecasts.push(new WeatherForecast (forecast.max_temp, forecast.datetime));
       });
+      
       
     });
   }
